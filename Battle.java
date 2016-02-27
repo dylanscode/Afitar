@@ -8,7 +8,7 @@ public class Battle
 
 	while (true)
 	{
-		if (avatar1.getStamina() > avatar2.getStamina())
+		if (avatar1.getStamina() >= avatar2.getStamina())
 			priority = 1;
 		else if (avatar2.getStamina() > avatar1.getStamina())
 			priority = 2;
