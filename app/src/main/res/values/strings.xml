@@ -23,6 +23,12 @@
     <string name="login_button">Login</string>
     <string name="title_activity_afitar">Afitar</string>
 
+    <string name="preference_file_key">io.dylanmcguire.afitar.PREFERENCE_FILE_KEY</string>
+
+    <string name="resting_heart_rate_key">io.dylanmcguire.afitar.RESTING_HEART_RATE_KEY</string>
+    <string name="resting_heart_rate"></string>
+    <string name="update_heart_rate_msg">Set Resting Heart Rate</string>
+
     <string name="update_food">Food</string>
     <string name="update_exercise">Exercise</string>
     <string name="update_sleep">Sleep</string>

@@ -53,6 +53,8 @@
         </activity>
         <activity android:name=".UpdateMoodActivity" >
         </activity>
+        <activity android:name=".EnterMoodActivity" >
+        </activity>
     </application>
 
 </manifest>
