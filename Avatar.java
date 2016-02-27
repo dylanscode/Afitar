@@ -3,11 +3,11 @@ public class Avatar
 	private double rank;
 	private double hitPoints;
 	private double stamina;
-	char characterType;
+	private char characterType;
 
 	public Avatar()
 	{
-		rank, hitPoints, stamina = 0;
+		rank = 0; hitPoints = 0; stamina = 0;
 	}
 
 	public void changeRank(double rankAdded)
@@ -23,6 +23,11 @@ public class Avatar
 	public double getHitPoints()
 	{
 		return hitPoints;
+	}
+	
+	public double getStamina()
+	{
+		return stamina;
 	}
 
 	public double getRank()
