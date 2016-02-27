@@ -1,0 +1,53 @@
+public class Avatar
+{
+	private double rank;
+	private double hitPoints;
+	private double stamina;
+	char characterType;
+
+	public Avatar()
+	{
+		rank, hitPoints, stamina = 0;
+	}
+
+	public void changeRank(double rankAdded)
+	{
+		rank += rankAdded;
+	}
+	
+	public double getHitPoints()
+	{
+		return hitPoints;
+	}
+
+	public double getRank()
+	{
+		return rank;
+	}
+}
+
+public class Battle
+{
+	private Avatar avatar1;
+	private Avatar avatar2;
+	private double points;
+	
+	while (avatar1.getHitPoints() > 0 && avatar2.getHitPoints() > 0)
+	{
+		
+	}
+
+	if (avatar1.getHitPoints() == 0)
+	{
+		avatar2.addRank(points);
+		avatar1.addRank(points * -1);
+	}
+	else if (avatar2.getHitPoints() == 0)
+	{
+		avatar1.addRank(points);
+		avatar2.addRank(points * -1);
+	}
+}
+
+			
+
