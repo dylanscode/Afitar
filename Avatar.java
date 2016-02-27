@@ -4,10 +4,35 @@ public class Avatar
 	private double hitPoints;
 	private double stamina;
 	private String characterType;
+	private double nourishment;
+	private double meds;
+	private double sleep;
+	private double exercise;
+	private boolean battling;
 
 	public Avatar()
 	{
 		rank = 0; hitPoints = 0; stamina = 0;
+	}
+	
+	public double getNourish()
+	{
+		return nourishment;
+	}
+	
+	public double getMeds()
+	{
+		return meds;
+	}
+	
+	public double getSleep()
+	{
+		return sleep;
+	}
+	
+	public double getExercise()
+	{
+		return exercise;
 	}
 
 	public void changeRank(double rankAdded)
@@ -15,6 +40,10 @@ public class Avatar
 		rank += rankAdded;
 	}
 
+	public boolean isBattling()
+	{
+		return battling;
+	}
 	public void changeHitPoints(double hpAdded)
 	{
 		hitPoints += hpAdded;
