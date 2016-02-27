@@ -17,7 +17,14 @@ import com.microsoft.band.BandException;
 import com.microsoft.band.BandInfo;
 import com.microsoft.band.ConnectionState;
 import com.microsoft.band.*;
+import com.microsoft.band.sensors.BandAccelerometerEvent;
+import com.microsoft.band.sensors.BandAccelerometerEventListener;
 import com.microsoft.band.sensors.BandCaloriesEvent;
+
+import com.microsoft.band.sensors.BandHeartRateEvent;
+import com.microsoft.band.sensors.BandHeartRateEventListener;
+import com.microsoft.band.sensors.HeartRateConsentListener;
+import com.microsoft.band.sensors.SampleRate;
 
 import java.sql.Connection;
 
@@ -25,21 +32,21 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "io.dylanmcguire.afitar.MESSAGE";
     static String message = "not even close";
+    String disconnectedMsg = "Band is not connected.";
     private TextView txtStatus;
     private BandClient client = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         txtStatus = (TextView) findViewById(R.id.txtStatus);
         new CheckConnectionTask().execute();
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -59,39 +66,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
-    public void checkConnection(View view) {
-        final Intent intent = new Intent(this, ConfirmConnectionActivity.class);
-
-        // connect to the band
-        BandInfo[] pairedBands = BandClientManager.getInstance().getPairedBands();
-        BandClient bandClient = BandClientManager.getInstance().create(this, pairedBands[0]);
-        final BandPendingResult<ConnectionState> pendingResult = bandClient.connect();
-
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    // check whether we're connected
-                    ConnectionState state = pendingResult.await();
-                    if (state == ConnectionState.CONNECTED) {
-                        message = "connected!";
-                    } else {
-                        message = "Not connected :(";
-                    }
-                } catch (InterruptedException e) {
-                    message = "interrupted";
-                } catch (BandException e) {
-                    message = "band exception";
-                }
-
-                intent.putExtra(EXTRA_MESSAGE, message);
-                startActivity(intent);
-            }
-        });
-
+    public void goToEmpty(View view) {
+        Intent intent = new Intent(this, SplashActivity.class);
+        startActivity(intent);
     }
 
     // prints a message if necessary
@@ -126,11 +105,10 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             try {
                 if (getConnectedBandClient()) {
-                    appendToUI("Band is connected!");
                     String fwVersion = client.getFirmwareVersion().await();
                     appendToUI("Firmware version is " + fwVersion);
                 } else {
-                    appendToUI("Band is not connected. :(");
+                    appendToUI(disconnectedMsg);
                 }
             } catch (Exception e) {
                 appendToUI(e.getMessage());
@@ -138,4 +116,49 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    /***********************************************************************************************
+     * ACCELEROMETER
+     **********************************************************************************************/
+    private BandAccelerometerEventListener mAccelerometerEventListener = new BandAccelerometerEventListener() {
+        @Override
+        public void onBandAccelerometerChanged(BandAccelerometerEvent bandAccelerometerEvent) {
+            if (bandAccelerometerEvent != null) {
+                // TODO implement this functionality
+            }
+        }
+    };
+
+    private class AccelerometerSubscriptionTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                if (getConnectedBandClient()) {
+                    client.getSensorManager().registerAccelerometerEventListener(
+                            mAccelerometerEventListener, SampleRate.MS128);
+                } else {
+                    appendToUI(disconnectedMsg);
+                }
+            } catch (Exception e) {
+                appendToUI(e.getMessage());
+            }
+            return null;
+        }
+    }
+
+    /***********************************************************************************************
+     * HEART RATE
+     **********************************************************************************************/
+
+    /***********************************************************************************************
+     * BAND CONTACT STATE
+     **********************************************************************************************/
+
+    /***********************************************************************************************
+     * GSR
+     **********************************************************************************************/
+
+    /***********************************************************************************************
+     * DISTANCE
+     **********************************************************************************************/
 }
