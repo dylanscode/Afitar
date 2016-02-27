@@ -35,18 +35,39 @@ public class Avatar
 		return exercise;
 	}
 
-	public void changeRank(double rankAdded)
-	{
-		rank += rankAdded;
-	}
-
 	public boolean isBattling()
 	{
 		return battling;
 	}
+	
 	public void changeHitPoints(double hpAdded)
 	{
 		hitPoints += hpAdded;
+	}
+	
+	public void changeRank(double rankAdded)
+	{
+		rank += rankAdded;
+	}
+	
+	public void changeNourish(double nourishAdded)
+	{
+		nourishment += nourishAdded;
+	}
+	
+	public void changeMeds(double medsAdded)
+	{
+		meds += medsAdded;
+	}
+	
+	public void changeExercise(double exAdded)
+	{
+		exercise += exAdded;
+	}
+	
+	public void changeSleep(double sleepAdded)
+	{
+		sleep += sleepAdded;
 	}
 	
 	public double getHitPoints()
