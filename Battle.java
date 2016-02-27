@@ -18,15 +18,23 @@ public class Battle
 			
 			case 1: 
 				{
-					dmg = avatar2.getNourish() + avatar2.getMeds() + avatar2.getSleep();
+					dmg = avatar1.getNourish() + avatar1.getMeds() + avatar1.getSleep();
 					avatar2.changeHitPoints(dmg * -1);
 					if (avatar2.getHitPoints() <= 0) break;
+					
+					dmg = avatar2.getNourish() + avatar2.getMeds() + avatar2.getSleep();
+					avatar1.changeHitPoints(dmg * -1);
+					if (avatar1.getHitPoints() <= 0) break;
 				}
 			case 2:
 				{
-					dmg = avatar1.getNourish() + avatar1.getMeds() + avatar1.getSleep();
-					avatar1.addHitPoints(dmg * -1);
+					dmg = avatar2.getNourish() + avatar2.getMeds() + avatar2.getSleep();
+					avatar1.changeHitPoints(dmg * -1);
 					if (avatar1.getHitPoints() <= 0) break;
+					
+					dmg = avatar1.getNourish() + avatar1.getMeds() + avatar1.getSleep();
+					avatar2.changeHitPoints(dmg * -1);
+					if (avatar2.getHitPoints() <= 0) break;
                                 }	
 		}
 					
