@@ -30,7 +30,28 @@
         </activity>
         <activity android:name=".SplashActivity" >
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".AfitarActivity"
+            android:label="@string/title_activity_afitar"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".StatsActivity" >
+        </activity>
+        <activity android:name=".MonitorActivity" >
+        </activity>
+        <activity android:name=".BattleActivity" >
+        </activity>
+        <activity android:name=".UpdateSleepActivity" >
+        </activity>
+        <activity android:name=".UpdateFoodActivity" >
+        </activity>
+        <activity android:name=".UpdateExerciseActivity" >
+        </activity>
+        <activity android:name=".UpdateMedsActivity" >
+        </activity>
+        <activity android:name=".UpdateMoodActivity" >
         </activity>
     </application>
 

@@ -21,4 +21,26 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login_button">Login</string>
+    <string name="title_activity_afitar">Afitar</string>
+
+    <string name="update_food">Food</string>
+    <string name="update_exercise">Exercise</string>
+    <string name="update_sleep">Sleep</string>
+    <string name="update_meds">Meds</string>
+    <string name="update_mood">Mood</string>
+
+    <string name="food_name">Nutrition Score: </string>
+    <string name="exercise_name">Exercise Score: </string>
+    <string name="sleep_name">Sleep Score: </string>
+    <string name="meds_name">Medicine Score: </string>
+    <string name="mood_name">Mood Score: </string>
+
+    <string name="food_value">50</string>
+    <string name="exercise_value">14</string>
+    <string name="sleep_value">30</string>
+    <string name="meds_value">45</string>
+    <string name="mood_value">15</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
