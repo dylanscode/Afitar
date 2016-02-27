@@ -4,10 +4,11 @@ public class Avatar
 	private double hitPoints;
 	private double stamina;
 	private String characterType;
-	private double nourishment;
-	private double meds;
-	private double sleep;
-	private double exercise;
+	private double nourishment, fatsOilsSweets, fruit, vegs, grains, meats, dairy;
+	private double meds, medsTaken;
+	private int medsPerDay;
+	private double sleep, sleepHours;
+	private double exercise, exerciseTime;
 	private boolean battling;
 
 	public Avatar()
@@ -17,21 +18,36 @@ public class Avatar
 	
 	public double getNourish()
 	{
+		nourishment = fruit + vegs + grains + meats + dairy - fatsOilsSweets;
 		return nourishment;
 	}
 	
 	public double getMeds()
 	{
+		if (medsPerDay == medsTaken)
+			meds = 40;
+		else meds = 0;
 		return meds;
 	}
 	
 	public double getSleep()
 	{
-		return sleep;
+		if (sleepHours >= 11)
+		{
+			sleep = 20 - 5*(sleepHours - 10);
+			return sleep;
+		}
+		else
+		{
+			sleep = 2*sleepHours;
+			return sleep;
+		}
+	        
 	}
 	
 	public double getExercise()
 	{
+		exercise = exerciseTime / 3;
 		return exercise;
 	}
 
@@ -50,24 +66,55 @@ public class Avatar
 		rank += rankAdded;
 	}
 	
-	public void changeNourish(double nourishAdded)
+	public void changeFruit(double fr)
 	{
-		nourishment += nourishAdded;
+		fruit = fr;
+		if (fruit > 3) fruit = 3;
 	}
 	
-	public void changeMeds(double medsAdded)
+	public void changeVegs(double v)
 	{
-		meds += medsAdded;
+		vegs = v;
+		if (vegs > 5) vegs = 5;
 	}
 	
-	public void changeExercise(double exAdded)
+	public void changeMeats(double m)
 	{
-		exercise += exAdded;
+		meats = m;
+		if (meats > 4) meats = 4;
 	}
 	
-	public void changeSleep(double sleepAdded)
+	public void changeDairy(double d)
 	{
-		sleep += sleepAdded;
+		dairy = d;
+		if (dairy > 3) dairy = 3;
+	}
+	
+	public void changeGrains(double g)
+	{
+		grains = g;
+		if (grains > 6) grains = 6;
+	}
+	
+	public void changeSweets(double s)
+	{
+		fatsOilsSweets = s;
+	}
+	
+	
+	public void changeMedsPerDay(double medsAdded)
+	{
+		medsPerDay = medsAdded;
+	}
+	
+	public void changeExerciseTime(double tAdded)
+	{
+		exerciseTime = tAdded;
+	}
+	
+	public void changeSleepHours(double sleepHrsAdded)
+	{
+		sleepHours - sleepHrsAdded;
 	}
 	
 	public double getHitPoints()
