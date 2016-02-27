@@ -3,7 +3,7 @@ public class Avatar
 	private double rank;
 	private double hitPoints;
 	private double stamina;
-	private char characterType;
+	private String characterType;
 
 	public Avatar()
 	{
@@ -33,5 +33,10 @@ public class Avatar
 	public double getRank()
 	{
 		return rank;
+	}
+	
+	public String getType()
+	{
+		return characterType;
 	}
 }
